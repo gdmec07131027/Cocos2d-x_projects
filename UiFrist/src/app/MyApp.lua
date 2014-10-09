@@ -61,4 +61,28 @@ function MyApp:createNextButton(scene)
 	:addTo(scene)
 end
 
+function MyApp:createTitle(scene, title)
+	cc.ui.UILabel.new({text = "--"..title.."--", size = 24 , color = display.COLOR_BLACK})
+	:align(display.CENTER, display.cx, display.top - 20)
+	:addTo(scene)
+end
+
+function MyApp:createGrid(scene)
+    display.newColorLayer(cc.c4b(255, 255, 255, 255)):addTo(scene)
+
+    for y = display.bottom, display.top, 40 do
+        display.newLine(
+            {{display.left, y}, {display.right, y}},
+            {borderColor = cc.c4f(0.9, 0.9, 0.9, 1.0)})
+        :addTo(scene)
+    end
+
+    for x = display.bottom, display.width, 40 do
+    	display.newLine(
+    		{{x, display.bottom}, {x, display.top}},
+    		{borderColor = cc.c4f(0.9, 0.9, 0.9, 1.0)})
+    	:addTo(scene)
+    end
+end
+
 return MyApp
